@@ -75,8 +75,7 @@
       {{#each details.RelatedMalware as |malware|}}
         {{#if malware}}
           <div>
-            <span class='p-key'>Malware: </span>
-            <span class='p-value'>{{malware}}</span>
+            <span class='tag'>{{malware}}</span>
           </div>
         {{/if}}
       {{/each}}
@@ -90,8 +89,7 @@
       {{#each details.RelatedThreatActors as |actor|}}
         {{#if actor}}
           <div>
-            <span class='p-key'>Actor: </span>
-            <span class='p-value'>{{actor}}</span>
+            <span class='tag'>{{actor}}</span>
           </div>
         {{/if}}
       {{/each}}
