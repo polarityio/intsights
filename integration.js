@@ -59,21 +59,18 @@ const doLookup = async (entities, options, cb) => {
 const lookupIoc = async (entity, options) => {
   Logger.trace({ options });
   let results;
-  try {
-    results = await axios.get(URL, {
-      auth: {
-        username: options.username,
-        password: options.password
-      },
-      params: {
-        iocValue: entity.value
-      }
-    });
-  } catch (err) {
-    Logger.trace({ err });
-  }
-  const data = results.data;
 
+  results = await axios.get(URL, {
+    auth: {
+      username: options.username,
+      password: options.password
+    },
+    params: {
+      iocValue: entity.value
+    }
+  });
+
+  const data = results.data;
   return (lookupResult = {
     entity,
     data:
