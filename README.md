@@ -1,11 +1,8 @@
-# Polarity PhishStats Integration
+# Polarity IntSights Integration
 
-PhishStats is known for fighting phishing and cybercrime since 2014 by gathering, enhancing and sharing phishing information with the infosec community.
-The PhishStats integration searches the PhishStats API for Domains, URLs, IPs, and SHA256 Hashes for phishing related activity.
+The IntSights ETP Suite monitors thousands of sources across the clear, deep, and dark web to identify threats that directly target your unique digital footprint. IntSights Threat Command finds and mitigates external threats that directly target your organization, employees, and customers.
 
-<img width="350" alt="Integration Example" src="./assets/phishstats.png">
-
-To learn more about PhishStats, please visit: https://PhishStats.io/about/
+To learn more about IntSights, please visit: https://intsights.com/products/threat-command
 
 ## Installation Instructions
 
