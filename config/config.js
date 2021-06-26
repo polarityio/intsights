@@ -75,8 +75,8 @@ module.exports = {
   options: [
     {
       key: 'username',
-      name: 'User Name',
-      description: 'Valid IntSights username',
+      name: 'Username',
+      description: 'A Valid IntSights API Username',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -85,7 +85,7 @@ module.exports = {
     {
       key: 'password',
       name: 'Password',
-      description: 'Valid IntSights Password',
+      description: 'A Valid IntSights API Password',
       default: '',
       type: 'password',
       userCanEdit: false,

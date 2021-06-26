@@ -34,9 +34,7 @@ const doLookup = async (entities, options, cb) => {
 
   try {
     lookupResults = await async.parallelLimit(
-      entities.map((entity) => async () => {
-        return (lookupResult = await lookupIoc(entity, options));
-      }),
+      entities.map((entity) => async () => lookupIoc(entity, options)),
       10
     );
   } catch (err) {
@@ -74,29 +72,58 @@ const lookupIoc = async (entity, options) => {
   return (lookupResult = {
     entity,
     data:
-      Array.isArray([data]) && [data].length > 0
-        ? { summary: getSummary([data]), details: [data] }
+      Object.keys(data).length > 0
+        ? { summary: getSummary(data), details: data }
         : null
   });
 };
 
 const getSummary = (data) => {
   let tags = [];
-  if (Array.isArray(data) && data.length > 0) {
-    const totalResults = data.length;
-    tags.push(`Results: ${totalResults}`);
+  if (Object.keys(data).length > 0) {
+    const totalResults = data.Sources.length;
+    tags.push(`Sources: ${totalResults}`);
 
-    if (data.Tags) {
+    if (data.Tags && data.Tags.length) {
       data.Tags.map((tag) => {
-        tags.push(`${tag}`);
+        tags.push(tag);
+      });
+    }
+    if (data.SystemTags && data.SystemTags.length) {
+      data.SystemTags.map((tag) => {
+        tags.push(tag);
       });
     }
   }
   return tags;
 };
 
+
+function validateOption(errors, options, optionName, errMessage) {
+  if (
+    typeof options[optionName].value !== 'string' ||
+    (typeof options[optionName].value === 'string' &&
+      options[optionName].value.length === 0)
+  ) {
+    errors.push({
+      key: optionName,
+      message: errMessage
+    });
+  }
+}
+
+function validateOptions(options, callback) {
+  let errors = [];
+
+  validateOption(errors, options, 'username', 'You must provide a valid Username.');
+  validateOption(errors, options, 'password', 'You must provide a valid Password.');
+
+  callback(null, errors);
+}
+
 module.exports = {
   doLookup,
   startup,
-  lookupIoc
+  lookupIoc,
+  validateOptions
 };
