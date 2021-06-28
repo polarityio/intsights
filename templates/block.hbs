@@ -1,37 +1,37 @@
 {{#if details}}
-  <div class='mb-1'>
+  <div>
     {{#if details}}
-      <h1 class='p-title'>
-        {{fa-icon 'info' fixedWidth=true}}
+      <h1 class="p-title">
+        {{fa-icon "info" fixedWidth=true}}
         Searched IOC -
         {{details.Value}}
       </h1>
     {{/if}}
 
-    <div class='title'>
-      <span class='title'>{{fa-icon 'search' fixedWidth=true}} Detection</span>
+    <div class="title">
+      <span class="title">{{fa-icon "search" fixedWidth=true}} Detection</span>
     </div>
 
     {{#if details.Geolocation}}
       <div>
-        <span class='p-key'>Geolocation : </span>
-        <span class='p-value'>{{details.Geolocation}}</span>
+        <span class="p-key">Geolocation : </span>
+        <span class="p-value">{{details.Geolocation}}</span>
       </div>
     {{/if}}
 
     {{#if details.Severity}}
       <div>
-        <span class='p-key'>Severity: </span>
-        <span class='severity-key'>{{details.Severity}}</span>
+        <span class="p-key">Severity: </span>
+        <span class="severity-key">{{details.Severity}}</span>
       </div>
     {{/if}}
 
     {{#if details.FirstSeen}}
       <div>
-        <span class='p-key'>First Seen: </span>
-        <span class='p-value'>{{moment-format
+        <span class="p-key">First Seen: </span>
+        <span class="p-value">{{moment-format
             details.FirstSeen
-            'MM/DD/YYYY HH:mm:ss'
+            "MM/DD/YYYY HH:mm:ss"
             timeZone=timezone
           }}</span>
       </div>
@@ -39,29 +39,29 @@
 
     {{#if details.LastSeen}}
       <div>
-        <span class='p-key'>Last Seen: </span>
-        <span class='p-value'>{{moment-format
+        <span class="p-key">Last Seen: </span>
+        <span class="p-value">{{moment-format
             details.LastSeen
-            'MM/DD/YYYY HH:mm:ss'
+            "MM/DD/YYYY HH:mm:ss"
             timeZone=timezone
           }}</span>
       </div>
     {{/if}}
 
     {{#if details.Sources}}
-      <div class='title'>
-        <span class='title'>{{fa-icon 'box' fixedWidth=true}} Sources</span>
+      <div class="title">
+        <span class="title">{{fa-icon "box" fixedWidth=true}} Sources</span>
       </div>
       {{#each details.Sources as |source|}}
         {{#if (and source.Name source.ConfidenceLevel)}}
-          <div class='sources-list'>
+          <div class="sources-list">
             <div>
-              <span class='p-key'>Source: </span>
-              <span class='p-value'>{{source.Name}}</span>
+              <span class="p-key">Source: </span>
+              <span class="p-value">{{source.Name}}</span>
             </div>
             <div>
-              <span class='p-key'>Confidence Level: </span>
-              <span class='p-value'>{{source.ConfidenceLevel}}</span>
+              <span class="p-key">Confidence Level: </span>
+              <span class="p-value">{{source.ConfidenceLevel}}</span>
             </div>
           </div>
         {{/if}}
@@ -69,29 +69,29 @@
     {{/if}}
 
     {{#if details.RelatedMalware}}
-      <div class='title'>
+      <div class="title">
         <span>
-          {{fa-icon 'virus' fixedWidth=true}}
+          {{fa-icon "virus" fixedWidth=true}}
           Related Malware</span>
       </div>
       {{#each details.RelatedMalware as |malware|}}
         {{#if malware}}
           <div>
-            <span class='tag'>{{malware}}</span>
+            <span class="tag">{{malware}}</span>
           </div>
         {{/if}}
       {{/each}}
     {{/if}}
 
     {{#if details.RelatedThreatActors}}
-      <div class='title'>
-        <span>{{fa-icon 'mask' fixedWidth=true}}
+      <div class="title">
+        <span>{{fa-icon "mask" fixedWidth=true}}
           Related Threat Actors</span>
       </div>
       {{#each details.RelatedThreatActors as |actor|}}
         {{#if actor}}
           <div>
-            <span class='tag'>{{actor}}</span>
+            <span class="tag">{{actor}}</span>
           </div>
         {{/if}}
       {{/each}}
