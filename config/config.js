@@ -26,6 +26,7 @@ module.exports = {
     'Searches the IntSights API and returns results from the most recent, relevant scan',
   entityTypes: ['IPv4', 'IPv6', 'domain', 'url', 'SHA256'],
   onDemandOnly: true,
+  defaultColor: 'light-pink',
   /**
    * An array of style files (css or less) that will be included for your integration. Any styles specified in
    * the below files can be used in your custom template.
@@ -70,7 +71,7 @@ module.exports = {
     rejectUnauthorized: true
   },
   logging: {
-    level: 'info' //trace, debug, info, warn, error, fatal
+    level: 'trace' //trace, debug, info, warn, error, fatal
   },
   options: [
     {

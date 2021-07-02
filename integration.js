@@ -1,11 +1,11 @@
-const axios = require('axios');
+// const axios = require('axios');
+const gaxios = require('gaxios');
 const async = require('async');
 const fs = require('fs');
 const https = require('https');
 const config = require('./config/config');
 const errorToPojo = require('./utils/errorToPojo');
 
-const URL = 'https://api.intsights.com/public/v2/iocs/ioc-by-value?';
 const _configFieldIsValid = (field) => typeof field === 'string' && field.length > 0;
 let Logger;
 
@@ -23,7 +23,7 @@ const startup = (logger) => {
     ...(typeof rejectUnauthorized === 'boolean' && { rejectUnauthorized })
   });
 
-  axios.defaults = {
+  gaxios.instance.defaults = {
     agent: httpsAgent,
     ...(_configFieldIsValid(proxy) && { proxy: { host: proxy } })
   };
@@ -55,27 +55,29 @@ const doLookup = async (entities, options, cb) => {
 };
 
 const lookupIoc = async (entity, options) => {
-  Logger.trace({ options });
   let results;
+  const url = 'https://api.intsights.com/public/v2/iocs/ioc-by-value?';
+  Logger.trace({ OPTIONS: options });
+  try {
+    results = await gaxios.request({
+      url,
+      auth:
+        'Basic ' +
+        Buffer.from(options.username + ':' + options.password).toString('base64'),
+      params: {
+        iocValue: entity.value
+      }
+    });
 
-  results = await axios.get(URL, {
-    auth: {
-      username: options.username,
-      password: options.password
-    },
-    params: {
-      iocValue: entity.value
-    }
-  });
-
-  const data = results.data;
-  return (lookupResult = {
-    entity,
-    data:
-      Object.keys(data).length > 0
-        ? { summary: getSummary(data), details: data }
-        : null
-  });
+    const data = results.data;
+    return (lookupResult = {
+      entity,
+      data:
+        Object.keys(data).length > 0 ? { summary: getSummary(data), details: data } : null
+    });
+  } catch (err) {
+    Logger.trace({ ERR: err });
+  }
 };
 
 const getSummary = (data) => {
@@ -97,7 +99,6 @@ const getSummary = (data) => {
   }
   return tags;
 };
-
 
 function validateOption(errors, options, optionName, errMessage) {
   if (
