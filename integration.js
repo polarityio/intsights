@@ -41,9 +41,9 @@ const doLookup = async (entities, options, cb) => {
     let detailMsg = 'There was an unexpected error';
 
     if (err.response) {
-      detailsMsg = `Received unexpected HTTP status ${err.response.status}`;
+      detailMsg = `Received unexpected HTTP status ${err.response.status}`;
     } else if (err.request) {
-      detailsMsg = `There was an HTTP err`;
+      detailMsg = `There was an HTTP err`;
     } else {
       detailMsg = err.message;
     }
