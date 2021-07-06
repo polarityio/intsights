@@ -1,16 +1,11 @@
-{{#if details}}
   <div>
-    {{#if details}}
-      <h1 class="p-title">
-        {{fa-icon "info" fixedWidth=true}}
-        Searched IOC -
-        {{details.Value}}
-      </h1>
-    {{/if}}
+    <h1 class="p-title">
+      {{fa-icon "info-circle" fixedWidth=true}}
+      Searched IOC -
+      {{details.Value}}
+    </h1>
 
-    <div class="title">
-      <span class="title">{{fa-icon "search" fixedWidth=true}} Detection</span>
-    </div>
+    <h1 class="p-title">{{fa-icon icon="search" fixedWidth=true}} Detection</h1>
 
     {{#if details.Geolocation}}
       <div>
@@ -29,29 +24,31 @@
     {{#if details.FirstSeen}}
       <div>
         <span class="p-key">First Seen: </span>
-        <span class="p-value">{{moment-format
+        <span class="p-value">
+          {{moment-format
             details.FirstSeen
             "MM/DD/YYYY HH:mm:ss"
             timeZone=timezone
-          }}</span>
+          }}
+        </span>
       </div>
     {{/if}}
 
     {{#if details.LastSeen}}
       <div>
         <span class="p-key">Last Seen: </span>
-        <span class="p-value">{{moment-format
+        <span class="p-value">
+          {{moment-format
             details.LastSeen
             "MM/DD/YYYY HH:mm:ss"
             timeZone=timezone
-          }}</span>
+          }}
+        </span>
       </div>
     {{/if}}
 
     {{#if details.Sources}}
-      <div class="title">
-        <span class="title">{{fa-icon "box" fixedWidth=true}} Sources</span>
-      </div>
+      <h1 class="p-title">{{fa-icon icon="box" fixedWidth=true}} Sources</h1>
       {{#each details.Sources as |source|}}
         {{#if (and source.Name source.ConfidenceLevel)}}
           <div class="sources-list">
@@ -69,32 +66,26 @@
     {{/if}}
 
     {{#if details.RelatedMalware}}
-      <div class="title">
-        <span>
-          {{fa-icon "virus" fixedWidth=true}}
-          Related Malware</span>
-      </div>
+      <h1 class="p-title">
+          {{fa-icon icon="virus" fixedWidth=true}}
+          Related Malware
+      </h1>
       {{#each details.RelatedMalware as |malware|}}
         {{#if malware}}
-          <div>
             <span class="tag">{{malware}}</span>
-          </div>
         {{/if}}
       {{/each}}
     {{/if}}
 
     {{#if details.RelatedThreatActors}}
-      <div class="title">
-        <span>{{fa-icon "mask" fixedWidth=true}}
-          Related Threat Actors</span>
-      </div>
+      <h1 class="p-title">
+        {{fa-icon icon="mask" fixedWidth=true}}
+        Related Threat Actors
+      </h1>
       {{#each details.RelatedThreatActors as |actor|}}
         {{#if actor}}
-          <div>
             <span class="tag">{{actor}}</span>
-          </div>
         {{/if}}
       {{/each}}
     {{/if}} 
   </div>
-{{/if}}
