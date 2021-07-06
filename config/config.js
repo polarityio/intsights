@@ -24,7 +24,7 @@ module.exports = {
    */
   description:
     'Searches the IntSights API and returns results from the most recent, relevant scan',
-  entityTypes: ['IPv4', 'IPv6', 'domain', 'url', 'SHA256'],
+  entityTypes: ['IPv4', 'IPv6', 'domain', 'SHA256'],
   onDemandOnly: true,
   defaultColor: 'light-pink',
   /**
