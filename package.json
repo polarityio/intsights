@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "async": "^3.2.0",
-    "axios": "^0.21.1",
     "gaxios": "^4.3.0"
   }
 }
