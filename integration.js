@@ -64,21 +64,19 @@ const lookupIoc = async (entity, options) => {
     headers: {
       Authorization:
         'Basic ' +
-        Buffer.from(options.username + ':' + options.password).toString('base64'),
-      params: {
-        iocValue: entity.value
-      }
-    });
+        Buffer.from(options.username + ':' + options.password).toString('base64')
+    },
+    params: {
+      iocValue: entity.value
+    }
+  });
 
-    const data = results.data;
-    return (lookupResult = {
-      entity,
-      data:
-        Object.keys(data).length > 0 ? { summary: getSummary(data), details: data } : null
-    });
-  } catch (err) {
-    Logger.trace({ ERR: err });
-  }
+  const data = results.data;
+  return {
+    entity,
+    data:
+      Object.keys(data).length > 0 ? { summary: getSummary(data), details: data } : null
+  };
 };
 
 const getSummary = (data) => {
