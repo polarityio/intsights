@@ -56,12 +56,13 @@ const doLookup = async (entities, options, cb) => {
 
 const lookupIoc = async (entity, options) => {
   let results;
-  const url = 'https://api.intsights.com/public/v2/iocs/ioc-by-value?';
-  Logger.trace({ OPTIONS: options });
-  try {
-    results = await gaxios.request({
-      url,
-      auth:
+  const url = 'https://api.intsights.com/public/v2/iocs/ioc-by-value';
+  Logger.trace({ options, entity }, 'lookupIoc');
+
+  results = await gaxios.request({
+    url,
+    headers: {
+      Authorization:
         'Basic ' +
         Buffer.from(options.username + ':' + options.password).toString('base64'),
       params: {
