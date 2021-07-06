@@ -5,6 +5,7 @@ const fs = require('fs');
 const https = require('https');
 const config = require('./config/config');
 const errorToPojo = require('./utils/errorToPojo');
+const MAX_SUMMARY_TAGS = 6;
 
 const _configFieldIsValid = (field) => typeof field === 'string' && field.length > 0;
 let Logger;
@@ -96,6 +97,11 @@ function getSummary(data) {
         tags.push(tag);
       });
     }
+  }
+  if (tags.length > MAX_SUMMARY_TAGS) {
+    let numTags = tags.length;
+    tags = tags.slice(0, MAX_SUMMARY_TAGS);
+    tags.push(`+${numTags - MAX_SUMMARY_TAGS} more`);
   }
   return tags;
 }
