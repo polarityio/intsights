@@ -9,7 +9,7 @@ const errorToPojo = require('./utils/errorToPojo');
 const _configFieldIsValid = (field) => typeof field === 'string' && field.length > 0;
 let Logger;
 
-const startup = (logger) => {
+function startup(logger) {
   Logger = logger;
   const {
     request: { ca, cert, key, passphrase, rejectUnauthorized, proxy }
@@ -27,9 +27,9 @@ const startup = (logger) => {
     agent: httpsAgent,
     ...(_configFieldIsValid(proxy) && { proxy: { host: proxy } })
   };
-};
+}
 
-const doLookup = async (entities, options, cb) => {
+async function doLookup(entities, options, cb) {
   let lookupResults;
 
   try {
@@ -53,9 +53,9 @@ const doLookup = async (entities, options, cb) => {
 
   Logger.trace({ lookupResults }, 'Lookup Results');
   return cb(null, lookupResults);
-};
+}
 
-const lookupIoc = async (entity, options) => {
+async function lookupIoc(entity, options) {
   let results;
   const url = 'https://api.intsights.com/public/v2/iocs/ioc-by-value';
   Logger.trace({ options, entity }, 'lookupIoc');
@@ -78,9 +78,9 @@ const lookupIoc = async (entity, options) => {
     data:
       Object.keys(data).length > 0 ? { summary: getSummary(data), details: data } : null
   };
-};
+}
 
-const getSummary = (data) => {
+function getSummary(data) {
   let tags = [];
   if (Object.keys(data).length > 0) {
     const totalResults = data.Sources.length;
@@ -98,7 +98,7 @@ const getSummary = (data) => {
     }
   }
   return tags;
-};
+}
 
 function validateOption(errors, options, optionName, errMessage) {
   if (
@@ -125,6 +125,5 @@ function validateOptions(options, callback) {
 module.exports = {
   doLookup,
   startup,
-  lookupIoc,
   validateOptions
 };
