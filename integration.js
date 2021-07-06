@@ -88,12 +88,12 @@ const getSummary = (data) => {
     tags.push(`Sources: ${totalResults}`);
 
     if (Array.isArray(data.Tags)) {
-      data.Tags.map((tag) => {
+      data.Tags.forEach((tag) => {
         tags.push(tag);
       });
     }
     if (Array.isArray(data.SystemTags)) {
-      data.SystemTags.map((tag) => {
+      data.SystemTags.forEach((tag) => {
         tags.push(tag);
       });
     }
