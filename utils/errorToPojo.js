@@ -1,4 +1,4 @@
-const errorToPojo = (detail, err) => {
+function errorToPojo(detail, err) {
   return err instanceof Error
     ? {
         ...err,
@@ -8,6 +8,6 @@ const errorToPojo = (detail, err) => {
         detail: detail ? detail : 'Unexpected error encountered'
       }
     : err;
-};
+}
 
 module.exports = errorToPojo;
