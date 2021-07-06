@@ -1,10 +1,10 @@
 {
   "main": "./integration.js",
-  "name": "phishstats",
-  "version": "3.3.1",
+  "name": "intsights",
+  "version": "3.0.0-beta",
   "private": true,
   "dependencies": {
     "async": "^3.2.0",
-    "axios": "^0.21.1"
+    "gaxios": "^4.3.0"
   }
 }

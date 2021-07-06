@@ -24,8 +24,9 @@ module.exports = {
    */
   description:
     'Searches the IntSights API and returns results from the most recent, relevant scan',
-  entityTypes: ['IPv4', 'IPv6', 'domain', 'url', 'SHA256'],
+  entityTypes: ['IPv4', 'IPv6', 'domain', 'SHA256'],
   onDemandOnly: true,
+  defaultColor: 'light-pink',
   /**
    * An array of style files (css or less) that will be included for your integration. Any styles specified in
    * the below files can be used in your custom template.
@@ -52,16 +53,16 @@ module.exports = {
   },
   request: {
     // Provide the path to your certFile. Leave an empty string to ignore this option.
-    // Relative paths are relative to the UrlScan integration's root directory
+    // Relative paths are relative to the integration's root directory
     cert: '',
     // Provide the path to your private key. Leave an empty string to ignore this option.
-    // Relative paths are relative to the UrlScan integration's root directory
+    // Relative paths are relative to the integration's root directory
     key: '',
     // Provide the key passphrase if required.  Leave an empty string to ignore this option.
-    // Relative paths are relative to the UrlScan integration's root directory
+    // Relative paths are relative to the integration's root directory
     passphrase: '',
     // Provide the Certificate Authority. Leave an empty string to ignore this option.
-    // Relative paths are relative to the UrlScan integration's root directory
+    // Relative paths are relative to the integration's root directory
     ca: '',
     // An HTTP proxy to be used. Supports proxy Auth with Basic Auth, identical to support for
     // the url parameter (by embedding the auth info in the uri)
@@ -75,21 +76,21 @@ module.exports = {
   options: [
     {
       key: 'username',
-      name: 'User Name',
-      description: 'Valid IntSights username',
+      name: 'Username',
+      description: 'A Valid IntSights API Username',
       default: '',
       type: 'text',
       userCanEdit: false,
-      adminOnly: false
+      adminOnly: true
     },
     {
       key: 'password',
       name: 'Password',
-      description: 'Valid IntSights Password',
+      description: 'A Valid IntSights API Password',
       default: '',
       type: 'password',
       userCanEdit: false,
-      adminOnly: false
+      adminOnly: true
     }
   ]
 };

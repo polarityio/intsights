@@ -1,35 +1,19 @@
-pre {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-height: 200px;
-  padding: 5px;
-  margin-top: 5px;
-}
-.p-title {
-  margin-bottom: 10px;
-}
-
 .p-value {
   word-break: normal;
-  font-weight: bold;
-  margin: 0px;
-}
-.mb-1 {
-  margin-top: 25px;
 }
 
-.title {
-  margin-top: 10px;
-}
-
-.container {
-  margin-top: 10px;
-}
-
+// possible values are low, medium, high
 .severity-key {
   font-weight: bold;
   text-transform: uppercase;
-  color: orange;
+
+  &.Medium{
+    color: #FF8F00;
+  }
+
+  &.High{
+    color: #FF4559;
+  }
 }
 
 .tag {
@@ -39,4 +23,10 @@ pre {
   white-space: nowrap;
   background-color: #eee;
   display: inline-block;
+}
+
+.sources-list {
+  margin: 0px 0px 8px 0;
+  padding: 0 0 0 3px;
+  border-left: 1px solid #eee;
 }
