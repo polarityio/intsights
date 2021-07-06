@@ -2,10 +2,18 @@
   word-break: normal;
 }
 
-// possible values are low, high
+// possible values are low, medium, high
 .severity-key {
   font-weight: bold;
   text-transform: uppercase;
+
+  &.Medium{
+    color: #FF8F00;
+  }
+
+  &.High{
+    color: #FF4559;
+  }
 }
 
 .tag {
