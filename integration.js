@@ -38,6 +38,7 @@ const doLookup = async (entities, options, cb) => {
       10
     );
   } catch (err) {
+    Logger.error({ err }, 'Error looking up indicator');
     let detailMsg = 'There was an unexpected error';
 
     if (err.response) {
@@ -50,7 +51,7 @@ const doLookup = async (entities, options, cb) => {
     return cb(errorToPojo(detailMsg, err));
   }
 
-  Logger.trace({ lookupResults });
+  Logger.trace({ lookupResults }, 'Lookup Results');
   return cb(null, lookupResults);
 };
 
