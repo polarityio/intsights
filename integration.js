@@ -87,6 +87,10 @@ function getSummary(data) {
     const totalResults = data.Sources.length;
     tags.push(`Sources: ${totalResults}`);
 
+    if(data.Severity){
+      tags.push(`Severity: ${data.Severity}`);
+    }
+
     if (Array.isArray(data.Tags)) {
       data.Tags.forEach((tag) => {
         tags.push(tag);
@@ -101,7 +105,7 @@ function getSummary(data) {
   if (tags.length > MAX_SUMMARY_TAGS) {
     let numTags = tags.length;
     tags = tags.slice(0, MAX_SUMMARY_TAGS);
-    tags.push(`+${numTags - MAX_SUMMARY_TAGS} more`);
+    tags.push(`+${numTags - MAX_SUMMARY_TAGS} more tags`);
   }
   return tags;
 }
