@@ -65,27 +65,32 @@
       {{/each}}
     {{/if}}
 
-    {{#if details.RelatedMalware}}
-      <h1 class="p-title">
-          {{fa-icon icon="virus" fixedWidth=true}}
-          Related Malware
-      </h1>
-      {{#each details.RelatedMalware as |malware|}}
-        {{#if malware}}
-            <span class="tag">{{malware}}</span>
-        {{/if}}
+    {{#if (gt details.Tags.length 0)}}
+      <h1 class="p-title">{{fa-icon icon="tags" fixedWidth=true}} Tags</h1>
+        {{#each details.Tags as |tag|}}
+          <span class="tag">{{tag}}</span>
+        {{/each}}
+    {{/if}}
+
+    {{#if (gt details.SystemTags.length 0)}}
+      <h1 class="p-title">{{fa-icon icon="tags" fixedWidth=true}} System Tags</h1>
+      {{#each details.SystemTags as |tag|}}
+         <span class="tag">{{tag}}</span>
       {{/each}}
     {{/if}}
 
-    {{#if details.RelatedThreatActors}}
-      <h1 class="p-title">
-        {{fa-icon icon="mask" fixedWidth=true}}
-        Related Threat Actors
-      </h1>
-      {{#each details.RelatedThreatActors as |actor|}}
-        {{#if actor}}
-            <span class="tag">{{actor}}</span>
-        {{/if}}
+    {{#if (gt details.RelatedMalware.length 0)}}
+      <h1 class="p-title">{{fa-icon icon="bug" fixedWidth=true}} Related Malware</h1>
+      {{#each details.RelatedMalware as |malware|}}
+        <span class="tag">{{malware}}</span>
       {{/each}}
-    {{/if}} 
+    {{/if}}
+
+    {{#if (gt details.RelatedThreatActors.length 0)}}
+      <h1 class="p-title">{{fa-icon icon="user-secret" fixedWidth=true}} Related Threat Actors</h1>
+      {{#each details.RelatedThreatActors as |actor|}}
+        <span class="tag">{{actor}}</span>
+      {{/each}}
+    {{/if}}
+
   </div>
