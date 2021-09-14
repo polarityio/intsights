@@ -24,9 +24,13 @@ function startup(logger) {
     ...(typeof rejectUnauthorized === 'boolean' && { rejectUnauthorized })
   });
 
+  if(_configFieldIsValid(proxy)){
+    process.env.HTTP_PROXY = proxy;
+    process.env.HTTPS_PROXY = proxy;
+  }
+
   gaxios.instance.defaults = {
-    agent: httpsAgent,
-    ...(_configFieldIsValid(proxy) && { proxy: { host: proxy } })
+    agent: httpsAgent
   };
 }
 
