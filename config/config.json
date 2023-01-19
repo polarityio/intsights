@@ -1,0 +1,55 @@
+{
+  "name": "IntSights",
+  "acronym": "IS",
+  "description": "Searches the IntSights API and returns results from the most recent, relevant scan",
+  "entityTypes": [
+    "IPv4",
+    "IPv6",
+    "domain",
+    "SHA256"
+  ],
+  "onDemandOnly": true,
+  "defaultColor": "light-pink",
+  "styles": [
+    "./styles/styles.less"
+  ],
+  "block": {
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
+  },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "username",
+      "name": "Username",
+      "description": "A Valid IntSights API Username",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "password",
+      "name": "Password",
+      "description": "A Valid IntSights API Password",
+      "default": "",
+      "type": "password",
+      "userCanEdit": false,
+      "adminOnly": true
+    }
+  ]
+}
