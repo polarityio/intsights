@@ -1,4 +1,5 @@
 {
+  "polarityIntegrationUuid": "f52f2950-cce1-11ed-aeee-075d3490155d",
   "name": "IntSights",
   "acronym": "IS",
   "description": "Searches the IntSights API and returns results from the most recent, relevant scan",
